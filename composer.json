@@ -1,0 +1,18 @@
+{
+    "name": "ronindev/php-for-beginners",
+    "description": "A simple project built on top of php and sql",
+    "require": {
+        "turso/libsql": "^0.2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ronindev\\PhpForBeginners\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Herman",
+            "email": "nitrowitty@gmail.com"
+        }
+    ]
+}
