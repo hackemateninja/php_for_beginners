@@ -1,9 +1,7 @@
 <?php
 
 return [
-	'database' => [
-		'host' => 'localhost',
-		'port' => 5432,
-		'dbname' => 'php_for_beginners',
-	]
+    'database' => [
+        'name' => 'php_for_beginners.db',
+    ],
 ];

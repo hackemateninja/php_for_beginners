@@ -1,25 +1,28 @@
 <?php
 
-class Database {
+class Database
+{
+    public $connection;
 
-	public $connection;
+    public function __construct($config)
+    {
 
+        // $dsn = "{$db}:".http_build_query($config, '', ';');
+        $dsn = 'sqlite:'.__DIR__.'/db/'.$config['name'];
 
-	public function __construct($config, $db, $username, $password){
-	
-		$dsn = "{$db}:" . http_build_query($config, '', ';');
+        $this->connection = new PDO($dsn, options: [
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ]);
+    }
 
-		$this->connection = new PDO($dsn, $username, password: $password,  options: [
-			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-		]);
-	}
+    public function query($query, $params)
+    {
 
-	public function query($query, $params){
-		
-		$statement = $this->connection->prepare($query);
-		
-		$statement->execute($params);
+        $statement = $this->connection->prepare($query);
 
-		return $statement;
-	}
-} 
+        $statement->execute($params);
+
+        return $statement;
+    }
+}
